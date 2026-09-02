@@ -1,4 +1,4 @@
-nom = input('Siasser votre nom: ')
+nom: str = input('Siasser votre nom: ')
 prenom = input('Siasser votre prenom: ')
 notes=[]
 for i in range(3):
