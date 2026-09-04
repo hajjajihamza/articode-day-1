@@ -67,3 +67,26 @@ print("Matieres enseignees (set) :")
 matieres = [i for e in etudiants for i in e.get('matieres').keys()]
 print(set(matieres))
 print('\n')
+
+
+notes_par_matiere = defaultdict(list)
+
+for e in etudiants:
+    for m , n in e['matieres'].items():
+        notes_par_matiere[m].append(n)
+    
+print("Notes par matiere :")
+for m, n in dict(notes_par_matiere).items():
+    print(m, n)
+print('\n')
+
+
+moyennes =  [[m,sum(n)/len(n)] for m,n in dict(notes_par_matiere).items()]
+
+meilleure_matiere = moyennes[0]
+
+for matiere, moyenne in moyennes:
+    if moyenne > meilleure_matiere[1]:
+        meilleure_matiere = [matiere, moyenne]
+
+print(f"Meilleure matiere (moyenne globale) : {meilleure_matiere[0]} ({meilleure_matiere[1]})")
